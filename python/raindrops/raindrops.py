@@ -1,11 +1,13 @@
 def convert(number):
     resp = ''
-    if not number % 3:
+
+    # Construct the response using modulo operators.
+    if number % 3 == 0:
         resp += 'Pling'
-    if not number % 5:
+    if number % 5 == 0:
         resp += 'Plang'
-    if not number % 7:
+    if number % 7 == 0:
         resp += 'Plong'
-    if not resp:
-        return str(number)
-    return resp
+
+    # Return resp (if truthy) or number as a string.
+    return resp or str(number)
