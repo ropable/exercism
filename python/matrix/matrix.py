@@ -1,12 +1,13 @@
-class Matrix:
-    def __init__(self, matrix_string):
-        # Parse matrix_string in two steps, for readability.
-        split_string = [s.split(" ") for s in matrix_string.splitlines()]
-        # Cast matrix elements as integers.
-        self.matrix = [[int(y) for y in x] for x in split_string]
+from typing import Text, List
 
-    def row(self, index):
+
+class Matrix:
+    def __init__(self, matrix_string: Text):
+        # Split matrix_string into lines, split lines on whitespace and cast elements as integers.
+        self.matrix = [[int(j) for j in i.split()] for i in matrix_string.splitlines()]
+
+    def row(self, index: int) -> List:
         return self.matrix[index - 1]
 
-    def column(self, index):
+    def column(self, index: int) -> List:
         return [i[index - 1] for i in self.matrix]
