@@ -1,9 +1,12 @@
+import re
+
+
 def is_isogram(string: str) -> bool:
-    # Remove spaces and hyphens from our string.
-    string = string.lower().replace(" ", "").replace("-", "")
-    allowed = "abcdefghijklmnopqrstuvwxyz"
+    # Remove non-ASCII characters from our string.
+    string = re.sub('[^a-z]', '', string.lower())
+    seen = []
     for i in string:
-        if i not in allowed:  # Whoops, we must have already used this letter!
+        if i in seen:
             return False
-        allowed = allowed.replace(i, "")
+        seen.append(i)
     return True
